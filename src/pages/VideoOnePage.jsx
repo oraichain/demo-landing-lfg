@@ -2,6 +2,12 @@ import CardSlider from '../components/CardSlider'
 
 const video1Outline = [
   {
+    title: "Who Are We",
+    body: "We are data scientists, quants, and blockchain infrastructure developers who have facilitated more than $1B in transaction volume over the last 5 years across Cosmos, Solana, Ethereum, BNB, and TON.",
+    script: "We're not just another team in the space. We're a collective of data scientists, quantitative analysts, and blockchain infrastructure developers with a proven track record. Over the past five years, we've facilitated over one billion dollars in transaction volume across the most prominent blockchain ecosystems—Cosmos, Solana, Ethereum, BNB Chain, and TON. This experience is what powers LFG.",
+    animationType: "network-ecosystem"
+  },
+  {
     title: "A New Quant Era",
     body: "LFG is building the first modular on-chain quant ecosystem — fast, automated, composable.",
     script: "Welcome to the future of decentralized finance. We're not just building another platform—we're creating the infrastructure for an entirely new quant economy. One that's fast, automated, and completely composable.",
@@ -55,7 +61,7 @@ function VideoOnePage() {
   return (
     <div className="page">
       <div className="page-content">
-        <h1 className="page-title">LFG: Quant Strategies Unchained</h1>
+        <h1 className="page-title">Deploy Best-in-class Quant Agents on Lighter.xyz</h1>
         <div className="slider-section">
           <p className="slider-instruction">Explore the LFG Vision. We are empowering a new generation of retail traders with best-in-class quant agents for perpetual DEX trading</p>
           <CardSlider cards={video1Outline} />
