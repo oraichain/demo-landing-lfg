@@ -233,8 +233,7 @@ function QuantMarketplace() {
               <div className="vault-banner-left">
                 <div className="vault-logo">LFG</div>
                 <div className="vault-banner-text">
-                  <h2 className="vault-banner-title">LFGVault</h2>
-                  <p className="vault-banner-subtitle">Click to view vault details</p>
+                  <h2 className="vault-banner-title">Experience our top strategies on Lighter.xyz</h2>
                 </div>
               </div>
               <div className="vault-banner-right">

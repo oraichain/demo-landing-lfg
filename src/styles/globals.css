@@ -329,6 +329,199 @@ body {
   color: var(--accent-yellow);
   line-height: 1.2;
   text-align: center;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.title-text {
+  position: relative;
+  z-index: 2;
+  display: block;
+  animation: titleFadeIn 0.8s ease-out;
+}
+
+.title-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: titleGlow 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes titleFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes titleGlow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+.outline-card-thumbnail {
+  position: relative;
+  overflow: hidden;
+}
+
+.thumbnail-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.animated-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--accent-yellow);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particleFloat 4s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+.particle:nth-child(1) { left: 10%; top: 20%; }
+.particle:nth-child(2) { left: 30%; top: 10%; }
+.particle:nth-child(3) { left: 50%; top: 15%; }
+.particle:nth-child(4) { left: 70%; top: 20%; }
+.particle:nth-child(5) { left: 90%; top: 10%; }
+.particle:nth-child(6) { left: 15%; top: 50%; }
+.particle:nth-child(7) { left: 40%; top: 60%; }
+.particle:nth-child(8) { left: 60%; top: 55%; }
+.particle:nth-child(9) { left: 85%; top: 50%; }
+.particle:nth-child(10) { left: 20%; top: 80%; }
+.particle:nth-child(11) { left: 50%; top: 85%; }
+.particle:nth-child(12) { left: 80%; top: 80%; }
+
+@keyframes particleFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(-20px) scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(-60px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-80px) scale(0);
+  }
+}
+
+.card-energy-rings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.energy-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid var(--accent-yellow);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.ring-1 {
+  width: 120%;
+  height: 120%;
+  animation: energyRing 3s ease-in-out infinite;
+}
+
+.ring-2 {
+  width: 140%;
+  height: 140%;
+  animation: energyRing 3s ease-in-out infinite 0.5s;
+}
+
+.ring-3 {
+  width: 160%;
+  height: 160%;
+  animation: energyRing 3s ease-in-out infinite 1s;
+}
+
+@keyframes energyRing {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  50% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+.outline-card.card-active .outline-card-body {
+  animation: bodyFadeIn 0.6s ease-out 0.3s both;
+}
+
+.outline-card.card-active .outline-card-script {
+  animation: scriptFadeIn 0.6s ease-out 0.6s both;
+}
+
+@keyframes bodyFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scriptFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .outline-card-body {
@@ -455,6 +648,7 @@ body {
   overflow: hidden;
 }
 
+/* Fire effects */
 .vault-banner::before {
   content: '';
   position: absolute;
@@ -462,19 +656,88 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, transparent 100%);
-  opacity: 0;
-  transition: opacity var(--transition-base);
+  background: linear-gradient(135deg, rgba(255, 100, 0, 0.1) 0%, rgba(255, 215, 0, 0.15) 50%, transparent 100%);
+  opacity: 1;
+  animation: fireGlow 2s ease-in-out infinite;
+  z-index: 0;
+}
+
+.vault-banner::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 40px;
+  background: radial-gradient(ellipse at center, rgba(255, 100, 0, 0.4) 0%, rgba(255, 215, 0, 0.2) 30%, transparent 70%);
+  border-radius: 50%;
+  animation: fireFlicker 1.5s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes fireGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes fireFlicker {
+  0%, 100% {
+    opacity: 0.4;
+    transform: translateX(-50%) scaleX(1);
+  }
+  25% {
+    opacity: 0.6;
+    transform: translateX(-50%) scaleX(1.1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(-50%) scaleX(0.9);
+  }
+  75% {
+    opacity: 0.7;
+    transform: translateX(-50%) scaleX(1.05);
+  }
 }
 
 .vault-banner:hover {
   transform: translateY(-4px);
-  box-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
-  border-color: var(--accent-yellow-hover);
+  box-shadow: 0 0 50px rgba(255, 100, 0, 0.6), 0 0 80px rgba(255, 215, 0, 0.4);
+  border-color: #ff6600;
 }
 
 .vault-banner:hover::before {
-  opacity: 1;
+  animation: fireGlow 1s ease-in-out infinite;
+}
+
+.vault-banner:hover::after {
+  animation: fireFlicker 0.8s ease-in-out infinite;
+  opacity: 0.8;
+}
+
+/* Fire particles */
+.vault-banner {
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(255, 100, 0, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 150, 0, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 50% 90%, rgba(255, 215, 0, 0.2) 0%, transparent 60%);
+  background-size: 100% 100%;
+  animation: fireBackground 3s ease-in-out infinite;
+}
+
+@keyframes fireBackground {
+  0%, 100% {
+    background-position: 0% 0%, 100% 0%, 50% 0%;
+  }
+  50% {
+    background-position: 10% 5%, 90% 5%, 50% 10%;
+  }
 }
 
 .vault-banner-content {
@@ -636,16 +899,16 @@ body {
 }
 
 .chart-area {
-  animation: chartPulse 3s ease-in-out infinite;
+  animation: chartPulse 6s ease-in-out infinite; /* Slowed down */
 }
 
 .chart-line {
-  animation: chartDraw 2s ease-in-out;
+  animation: chartDraw 4s ease-in-out; /* Slowed down */
 }
 
 .chart-dot {
-  animation: dotPulse 2s ease-in-out infinite;
-  animation-delay: calc(var(--i, 0) * 0.3s);
+  animation: dotPulse 4s ease-in-out infinite; /* Slowed down */
+  animation-delay: calc(var(--i, 0) * 0.5s); /* Slowed delay */
 }
 
 @keyframes chartPulse {
@@ -679,6 +942,7 @@ body {
   }
 }
 
+
 .wireframe-overlay {
   position: absolute;
   top: 0;
@@ -697,7 +961,7 @@ body {
   height: 48px;
   opacity: 0.3;
   color: var(--accent-yellow);
-  animation: iconFloat 3s ease-in-out infinite;
+  animation: iconFloat 6s ease-in-out infinite; /* Slowed down */
 }
 
 .wireframe-icon svg {
