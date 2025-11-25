@@ -295,7 +295,7 @@ function QuantMarketplace() {
   return (
     <div className="page">
       <div className="page-content">
-        <h1 className="page-title">Quant Marketplace</h1>
+        <h1 className="page-title">Quant Terminal</h1>
         
         <div className="marketplace-hero">
           <a href="https://mainnet.lfg.land/vault" className="vault-banner" target="_blank" rel="noopener noreferrer">

@@ -57,7 +57,7 @@ function VideoOnePage() {
       <div className="page-content">
         <h1 className="page-title">LFG: Quant Strategies Unchained</h1>
         <div className="slider-section">
-          <p className="slider-instruction">Explore how LFG is empowering a new generation of retail traders with best-in-class quant agents for perpetual DEX trading</p>
+          <p className="slider-instruction">Explore the LFG Vision. We are empowering a new generation of retail traders with best-in-class quant agents for perpetual DEX trading</p>
           <CardSlider cards={video1Outline} />
         </div>
       </div>
