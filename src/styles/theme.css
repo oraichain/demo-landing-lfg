@@ -1,12 +1,19 @@
 :root {
-  /* Colors */
+  /* Colors - Black & White with Colorful Accents */
   --bg-primary: #000000;
-  --bg-secondary: #1a1a1a;
-  --bg-card: #1f1f1f;
-  --text-primary: #ffffff;
-  --text-secondary: #cccccc;
+  --bg-secondary: #0a0a0a;
+  --bg-card: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #666666;
   --accent-yellow: #ffd700;
-  --accent-yellow-hover: #ffed4e;
+  --accent-yellow-hover: #ffaa00;
+  --accent-blue: #00d4ff;
+  --accent-purple: #b026ff;
+  --accent-green: #00ff88;
+  --accent-red: #ff3366;
+  --accent-orange: #ff6600;
+  --accent-pink: #ff00cc;
+  --accent-cyan: #00ffff;
   
   /* Spacing */
   --spacing-xs: 0.5rem;
