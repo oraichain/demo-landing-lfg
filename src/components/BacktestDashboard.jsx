@@ -21,22 +21,14 @@ function BacktestDashboard({ strategy, onClose, onJoinWaitlist }) {
         </div>
 
         <div className="backtest-content">
-          <div className="backtest-section">
-            <h3 className="backtest-section-title">Initialization Report</h3>
-            <div className="backtest-report">
-              <div className="report-item">
-                <span className="report-label">Bars loaded:</span>
-                <span className="report-value">{strategy.backtest.barsLoaded}</span>
+          <div className="backtest-team-section">
+            <div className="team-profile">
+              <div className="team-avatar">
+                <div className="avatar-placeholder">Q</div>
               </div>
-              <div className="report-item">
-                <span className="report-label">Built bars:</span>
-                <span className="report-value">{strategy.backtest.builtBars}</span>
-              </div>
-              <div className="report-item">
-                <span className="report-label">Signals found:</span>
-                <span className="report-value">
-                  {strategy.backtest.signalsTotal} ({strategy.backtest.signalsLong} long, {strategy.backtest.signalsShort} short)
-                </span>
+              <div className="team-info">
+                <div className="team-name">Quant Team</div>
+                <div className="team-badge">Community Contributor</div>
               </div>
             </div>
           </div>

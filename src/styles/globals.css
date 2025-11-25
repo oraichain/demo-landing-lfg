@@ -156,9 +156,9 @@ body {
 .presentation-container {
   position: relative;
   width: 100%;
-  height: calc(100vh - 250px);
+  height: calc(100vh - 180px);
   min-height: 500px;
-  max-height: 650px;
+  max-height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -306,10 +306,10 @@ body {
   width: 90%;
   max-width: 800px;
   height: auto;
-  max-height: calc(100vh - 300px);
+  max-height: calc(100vh - 220px);
   background-color: var(--bg-card);
   border-radius: var(--radius-lg);
-  padding: var(--spacing-lg);
+  padding: var(--spacing-md);
   box-shadow: var(--shadow-lg);
   display: flex;
   flex-direction: column;
@@ -328,10 +328,10 @@ body {
 
 .outline-card-thumbnail {
   width: 100%;
-  height: 280px;
+  height: 200px;
   border-radius: var(--radius-md);
   overflow: hidden;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
   background: #000;
   display: flex;
   align-items: center;
@@ -356,9 +356,9 @@ body {
 }
 
 .outline-card-title {
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 700;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
   color: var(--accent-yellow);
   line-height: 1.2;
   text-align: center;
@@ -827,34 +827,34 @@ body {
 
 .outline-card-body {
   color: var(--text-primary);
-  font-size: clamp(1rem, 2vw, 1.15rem);
-  line-height: 1.8;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  line-height: 1.6;
   flex: 1;
   text-align: center;
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
 }
 
 .outline-card-script {
-  margin-top: var(--spacing-lg);
-  padding: var(--spacing-lg);
+  margin-top: var(--spacing-sm);
+  padding: var(--spacing-md);
   background-color: rgba(255, 215, 0, 0.05);
   border-left: 4px solid var(--accent-yellow);
   border-radius: var(--radius-sm);
 }
 
 .script-label {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--accent-yellow);
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
   font-weight: 600;
 }
 
 .script-text {
   color: var(--text-secondary);
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 0.9rem;
+  line-height: 1.6;
   font-style: italic;
 }
 
@@ -875,18 +875,18 @@ body {
   }
 
   .presentation-container {
-    height: calc(100vh - 200px);
-    min-height: 500px;
-    max-height: 650px;
+    height: calc(100vh - 180px);
+    min-height: 450px;
+    max-height: 550px;
   }
   
   .outline-card {
-    max-height: 600px;
-    padding: var(--spacing-md);
+    max-height: 520px;
+    padding: var(--spacing-sm);
   }
   
   .outline-card-thumbnail {
-    height: 200px;
+    height: 160px;
   }
 
   .presentation-nav {
@@ -920,17 +920,17 @@ body {
 @media (max-width: 480px) {
   .presentation-container {
     height: calc(100vh - 150px);
-    min-height: 450px;
-    max-height: 550px;
+    min-height: 400px;
+    max-height: 480px;
   }
 
   .outline-card {
-    max-height: 500px;
+    max-height: 450px;
     padding: var(--spacing-sm);
   }
 
   .outline-card-thumbnail {
-    height: 150px;
+    height: 140px;
   }
 
   .presentation-nav {
@@ -1542,30 +1542,56 @@ body {
   gap: var(--spacing-sm);
 }
 
-.backtest-report {
-  background-color: var(--bg-secondary);
-  border-radius: var(--radius-sm);
-  padding: var(--spacing-md);
+.backtest-team-section {
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.team-profile {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.team-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-yellow), #ffaa00);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  flex-shrink: 0;
+}
+
+.avatar-placeholder {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--bg-primary);
+}
+
+.team-info {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-xs);
 }
 
-.report-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--spacing-xs) 0;
-}
-
-.report-label {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-}
-
-.report-value {
+.team-name {
+  font-size: 1.25rem;
+  font-weight: 700;
   color: var(--text-primary);
-  font-weight: 600;
+}
+
+.team-badge {
+  font-size: 0.85rem;
+  color: var(--accent-yellow);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: rgba(255, 215, 0, 0.1);
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  width: fit-content;
 }
 
 .backtest-results-grid {
