@@ -1,7 +1,210 @@
+import { useState } from 'react'
 import NavBar from '../components/NavBar'
+import StrategyCard from '../components/StrategyCard'
+import BacktestDashboard from '../components/BacktestDashboard'
+import {
+  MomentumIcon,
+  ArbitrageIcon,
+  MeanReversionIcon,
+  VolatilityIcon,
+  TrendFollowingIcon,
+  GridTradingIcon,
+  MarketMakingIcon,
+  ScalpingIcon
+} from '../components/StrategyIcons'
 import '../styles/globals.css'
 
+const strategies = [
+  {
+    id: 1,
+    name: "Momentum Surge",
+    description: "Captures explosive price movements with precision timing",
+    type: "Momentum",
+    icon: MomentumIcon,
+    winRate: 68,
+    apr: 245,
+    trades: 127,
+    wins: 86,
+    backtest: {
+      barsLoaded: "500 bars (5d 4h of data)",
+      builtBars: "500 15m",
+      signalsTotal: 500,
+      signalsLong: 255,
+      signalsShort: 245,
+      pnl: "+$12,450.00",
+      pnlPercent: "+12.45"
+    },
+    waitlistUrl: "https://form.typeform.com/to/placeholder"
+  },
+  {
+    id: 2,
+    name: "Arbitrage Hunter",
+    description: "Exploits price discrepancies across markets instantly",
+    type: "Arbitrage",
+    icon: ArbitrageIcon,
+    winRate: 82,
+    apr: 189,
+    trades: 94,
+    wins: 77,
+    backtest: {
+      barsLoaded: "500 bars (5d 4h of data)",
+      builtBars: "500 15m",
+      signalsTotal: 500,
+      signalsLong: 255,
+      signalsShort: 245,
+      pnl: "+$8,920.00",
+      pnlPercent: "+8.92"
+    },
+    waitlistUrl: "https://form.typeform.com/to/placeholder"
+  },
+  {
+    id: 3,
+    name: "Mean Reversion Pro",
+    description: "Profits from price corrections to historical averages",
+    type: "Mean Reversion",
+    icon: MeanReversionIcon,
+    winRate: 58,
+    apr: 156,
+    trades: 203,
+    wins: 118,
+    backtest: {
+      barsLoaded: "500 bars (5d 4h of data)",
+      builtBars: "500 15m",
+      signalsTotal: 500,
+      signalsLong: 255,
+      signalsShort: 245,
+      pnl: "+$15,340.00",
+      pnlPercent: "+15.34"
+    },
+    waitlistUrl: "https://form.typeform.com/to/placeholder"
+  },
+  {
+    id: 4,
+    name: "Volatility Vanguard",
+    description: "Thrives in high volatility environments",
+    type: "Volatility",
+    icon: VolatilityIcon,
+    winRate: 45,
+    apr: 312,
+    trades: 89,
+    wins: 40,
+    backtest: {
+      barsLoaded: "500 bars (5d 4h of data)",
+      builtBars: "500 15m",
+      signalsTotal: 500,
+      signalsLong: 255,
+      signalsShort: 245,
+      pnl: "+$22,180.00",
+      pnlPercent: "+22.18"
+    },
+    waitlistUrl: "https://form.typeform.com/to/placeholder"
+  },
+  {
+    id: 5,
+    name: "Trend Tracker",
+    description: "Rides strong trends with adaptive position sizing",
+    type: "Trend Following",
+    icon: TrendFollowingIcon,
+    winRate: 52,
+    apr: 178,
+    trades: 156,
+    wins: 81,
+    backtest: {
+      barsLoaded: "500 bars (5d 4h of data)",
+      builtBars: "500 15m",
+      signalsTotal: 500,
+      signalsLong: 255,
+      signalsShort: 245,
+      pnl: "+$9,670.00",
+      pnlPercent: "+9.67"
+    },
+    waitlistUrl: "https://form.typeform.com/to/placeholder"
+  },
+  {
+    id: 6,
+    name: "Grid Master",
+    description: "Systematic grid trading with dynamic levels",
+    type: "Grid Trading",
+    icon: GridTradingIcon,
+    winRate: 71,
+    apr: 134,
+    trades: 234,
+    wins: 166,
+    backtest: {
+      barsLoaded: "500 bars (5d 4h of data)",
+      builtBars: "500 15m",
+      signalsTotal: 500,
+      signalsLong: 255,
+      signalsShort: 245,
+      pnl: "+$7,890.00",
+      pnlPercent: "+7.89"
+    },
+    waitlistUrl: "https://form.typeform.com/to/placeholder"
+  },
+  {
+    id: 7,
+    name: "Market Maker Elite",
+    description: "Provides liquidity while capturing spread profits",
+    type: "Market Making",
+    icon: MarketMakingIcon,
+    winRate: 76,
+    apr: 98,
+    trades: 312,
+    wins: 237,
+    backtest: {
+      barsLoaded: "500 bars (5d 4h of data)",
+      builtBars: "500 15m",
+      signalsTotal: 500,
+      signalsLong: 255,
+      signalsShort: 245,
+      pnl: "+$6,540.00",
+      pnlPercent: "+6.54"
+    },
+    waitlistUrl: "https://form.typeform.com/to/placeholder"
+  },
+  {
+    id: 8,
+    name: "Scalp King",
+    description: "Ultra-fast execution for micro-profit accumulation",
+    type: "Scalping",
+    icon: ScalpingIcon,
+    winRate: 31,
+    apr: 445,
+    trades: 57,
+    wins: 18,
+    backtest: {
+      barsLoaded: "500 bars (5d 4h of data)",
+      builtBars: "500 15m",
+      signalsTotal: 500,
+      signalsLong: 255,
+      signalsShort: 245,
+      pnl: "+$5,545.00",
+      pnlPercent: "+5.54"
+    },
+    waitlistUrl: "https://form.typeform.com/to/placeholder"
+  }
+]
+
 function QuantMarketplace() {
+  const [selectedStrategy, setSelectedStrategy] = useState(null)
+  const [showBacktest, setShowBacktest] = useState(false)
+
+  const handleStrategyClick = (strategy) => {
+    setSelectedStrategy(strategy)
+    setShowBacktest(true)
+  }
+
+  const handleCloseBacktest = () => {
+    setShowBacktest(false)
+    setSelectedStrategy(null)
+  }
+
+  const handleJoinWaitlist = () => {
+    if (selectedStrategy?.waitlistUrl) {
+      window.open(selectedStrategy.waitlistUrl, '_blank')
+    }
+  }
+
   return (
     <div className="page">
       <NavBar />
@@ -39,117 +242,27 @@ function QuantMarketplace() {
           </a>
         </div>
         
-        <div className="marketplace-container">
-          <div className="marketplace-section">
-            <h2 className="marketplace-section-title">Holdings</h2>
-            <div className="marketplace-search">
-              <input 
-                type="text" 
-                placeholder="Type to search" 
-                className="marketplace-search-input"
+        <div className="strategies-section">
+          <h2 className="strategies-section-title">Available Strategies</h2>
+          <div className="strategies-grid">
+            {strategies.map((strategy) => (
+              <StrategyCard
+                key={strategy.id}
+                strategy={strategy}
+                onClick={() => handleStrategyClick(strategy)}
               />
-            </div>
-            
-            <div className="marketplace-table">
-              <div className="marketplace-table-header">
-                <div className="table-col-market">MARKET</div>
-                <div className="table-col-size">SIZE</div>
-                <div className="table-col-30d">PAST 30 DAYS</div>
-                <div className="table-col-pnl">30D P&L</div>
-                <div className="table-col-equity">EQUITY</div>
-              </div>
-              
-              <div className="marketplace-table-body">
-                {/* Sample holdings data - you can make this dynamic */}
-                <div className="marketplace-table-row">
-                  <div className="table-col-market">
-                    <div className="market-icon">B</div>
-                    <div>
-                      <div className="market-name">Bitcoin</div>
-                      <div className="market-position long">Long</div>
-                    </div>
-                  </div>
-                  <div className="table-col-size">
-                    <div className="size-value">$676,112</div>
-                    <div className="size-quantity">7.7165 BTC</div>
-                  </div>
-                  <div className="table-col-30d">
-                    <div className="chart-mini">📈</div>
-                  </div>
-                  <div className="table-col-pnl positive">
-                    <span className="pnl-arrow">↑</span> $1,675,317
-                  </div>
-                  <div className="table-col-equity">$2,150,834</div>
-                </div>
-                
-                <div className="marketplace-table-row">
-                  <div className="table-col-market">
-                    <div className="market-icon">S</div>
-                    <div>
-                      <div className="market-name">USDC</div>
-                      <div className="market-position long">Long</div>
-                    </div>
-                  </div>
-                  <div className="table-col-size">
-                    <div className="size-value">$851,782</div>
-                    <div className="size-quantity">851,781.9095 USDC</div>
-                  </div>
-                  <div className="table-col-30d">
-                    <div className="chart-mini">📈</div>
-                  </div>
-                  <div className="table-col-pnl">$0</div>
-                  <div className="table-col-equity">$851,782</div>
-                </div>
-                
-                <div className="marketplace-table-row">
-                  <div className="table-col-market">
-                    <div className="market-icon">S</div>
-                    <div>
-                      <div className="market-name">Solana</div>
-                      <div className="market-position long">Long</div>
-                    </div>
-                  </div>
-                  <div className="table-col-size">
-                    <div className="size-value">$383,667</div>
-                    <div className="size-quantity">2,801.74 SOL</div>
-                  </div>
-                  <div className="table-col-30d">
-                    <div className="chart-mini">📈</div>
-                  </div>
-                  <div className="table-col-pnl positive">
-                    <span className="pnl-arrow">↑</span> $332,195
-                  </div>
-                  <div className="table-col-equity">$518,557</div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
-          
-          <div className="marketplace-sidebar">
-            <div className="sidebar-card">
-              <h3 className="sidebar-title">Futures Balance</h3>
-              <div className="sidebar-value">$0.00</div>
-              <input 
-                type="text" 
-                placeholder="Enter amount to add" 
-                className="sidebar-input"
-              />
-            </div>
-          </div>
-        </div>
-        
-        <div className="marketplace-info">
-          <p>
-            This vault automatically trades across LFG markets, earning a share of platform fee revenue. 
-            It maintains a market-neutral strategy by quoting on both sides of the order book. 
-            Performance may fluctuate with market conditions, and there is a risk of partial or total loss of deposited USDC.
-          </p>
-          <p>
-            This vault is operated by LFG, the core team behind the LFG ecosystem. 
-            Operators are selected and governed by the LFG community.
-          </p>
         </div>
       </div>
+
+      {showBacktest && (
+        <BacktestDashboard
+          strategy={selectedStrategy}
+          onClose={handleCloseBacktest}
+          onJoinWaitlist={handleJoinWaitlist}
+        />
+      )}
     </div>
   )
 }
