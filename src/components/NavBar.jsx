@@ -7,18 +7,18 @@ function NavBar() {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <Link to="/video-1" className="navbar-logo">
+        <Link to="/" className="navbar-logo">
           LFG
         </Link>
         <div className="navbar-links">
-          <Link 
-            to="/video-1" 
-            className={`navbar-link ${location.pathname === '/video-1' ? 'active' : ''}`}
+          <Link
+            to="/"
+            className={`navbar-link ${location.pathname === '/' ? 'active' : ''}`}
           >
             Overview
           </Link>
-          <Link 
-            to="/marketplace" 
+          <Link
+            to="/marketplace"
             className={`navbar-link ${location.pathname === '/marketplace' ? 'active' : ''}`}
           >
             Marketplace
@@ -30,4 +30,3 @@ function NavBar() {
 }
 
 export default NavBar
-

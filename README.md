@@ -69,10 +69,6 @@ This creates a `dist/` directory with the production build.
 
 ## Routes
 
-- `/` - Redirects to `/video-1`
-- `/video-1` - The LFG Quant Ecosystem video page
-- `/video-2` - Why the LFG Token Matters video page
-
 ## Styling
 
 The app uses a dark theme with:
@@ -81,4 +77,3 @@ The app uses a dark theme with:
 - White text with yellow accents (#ffd700)
 - Rounded corners (8px)
 - Smooth transitions (0.25s ease)
-
