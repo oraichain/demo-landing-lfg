@@ -10,7 +10,7 @@ function CardSlider({ cards }) {
 
   const goToNext = () => {
     if (isLastCard) {
-      navigate('/marketplace')
+      navigate('/lighter/marketplace')
     } else {
       setCurrentIndex((prev) => (prev + 1) % cards.length)
     }
@@ -56,13 +56,13 @@ function CardSlider({ cards }) {
 
   return (
     <div className="presentation-wrapper">
-      <div 
+      <div
         className="presentation-container"
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
-        <button 
+        <button
           className="presentation-nav presentation-nav-left"
           onClick={goToPrevious}
           aria-label="Previous slide"
@@ -76,13 +76,13 @@ function CardSlider({ cards }) {
             const isActive = offset === 0
             const isLeft = offset < 0
             const isRight = offset > 0
-            
+
             return (
               <div
                 key={index}
                 className={`presentation-slide ${
-                  isActive ? 'active' : 
-                  isLeft ? 'left' : 
+                  isActive ? 'active' :
+                  isLeft ? 'left' :
                   isRight ? 'right' : ''
                 }`}
                 style={{
@@ -103,7 +103,7 @@ function CardSlider({ cards }) {
           })}
         </div>
 
-        <button 
+        <button
           className={`presentation-nav presentation-nav-right ${isLastCard ? 'nav-explore' : ''}`}
           onClick={goToNext}
           aria-label={isLastCard ? "Explore marketplace" : "Next slide"}
@@ -131,4 +131,3 @@ function CardSlider({ cards }) {
 }
 
 export default CardSlider
-

@@ -6,13 +6,12 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate to="/video-1" replace />} />
-        <Route path="/video-1" element={<VideoOnePage />} />
-        <Route path="/marketplace" element={<QuantMarketplace />} />
+        <Route path="/" element={<Navigate to="/lighter/video-1" replace />} />
+        <Route path="/lighter/video-1" element={<VideoOnePage />} />
+        <Route path="/lighter/marketplace" element={<QuantMarketplace />} />
       </Routes>
     </Router>
   )
 }
 
 export default App
-
