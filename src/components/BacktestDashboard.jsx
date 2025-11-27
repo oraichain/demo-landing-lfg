@@ -9,7 +9,7 @@ function BacktestDashboard({ strategy, onClose, onJoinWaitlist }) {
     <div className="backtest-overlay" onClick={onClose}>
       <div className="backtest-dashboard" onClick={(e) => e.stopPropagation()}>
         <button className="backtest-close" onClick={onClose}>×</button>
-        
+
         <div className="backtest-header">
           <div className="backtest-icon-wrapper">
             <IconComponent />
@@ -67,47 +67,47 @@ function BacktestDashboard({ strategy, onClose, onJoinWaitlist }) {
                   {strategy.wins}W / {strategy.backtest.losses || (strategy.trades - strategy.wins)}L
                 </span>
               </div>
-              
+
               <div className="backtest-metric-card">
                 <span className="metric-label">Profit Factor</span>
                 <span className="metric-value">{strategy.backtest.profitFactor || 'N/A'}</span>
               </div>
-              
+
               <div className="backtest-metric-card">
                 <span className="metric-label">Total Trades</span>
                 <span className="metric-value">{strategy.trades}</span>
               </div>
-              
+
               <div className="backtest-metric-card">
                 <span className="metric-label">ROI</span>
                 <span className="metric-value positive">{strategy.backtest.roi || strategy.backtest.pnlPercent}</span>
               </div>
-              
+
               <div className="backtest-metric-card">
                 <span className="metric-label">Avg Win</span>
                 <span className="metric-value positive">{strategy.backtest.avgWin || 'N/A'}</span>
               </div>
-              
+
               <div className="backtest-metric-card">
                 <span className="metric-label">Avg Loss</span>
                 <span className="metric-value negative">{strategy.backtest.avgLoss || 'N/A'}</span>
               </div>
-              
+
               <div className="backtest-metric-card">
                 <span className="metric-label">Max Drawdown</span>
                 <span className="metric-value negative">{strategy.backtest.maxDrawdown || 'N/A'}</span>
               </div>
-              
+
               <div className="backtest-metric-card">
                 <span className="metric-label">Current Drawdown</span>
                 <span className="metric-value">{strategy.backtest.currentDrawdown || '0.00%'}</span>
               </div>
-              
+
               <div className="backtest-metric-card">
                 <span className="metric-label">Total Profit</span>
                 <span className="metric-value positive">{strategy.backtest.totalProfit || 'N/A'}</span>
               </div>
-              
+
               <div className="backtest-metric-card">
                 <span className="metric-label">Total Loss</span>
                 <span className="metric-value negative">{strategy.backtest.totalLoss || 'N/A'}</span>
@@ -121,6 +121,7 @@ function BacktestDashboard({ strategy, onClose, onJoinWaitlist }) {
               <div className="backtest-trades-header">
                 <div className="trade-col">Time</div>
                 <div className="trade-col">Type</div>
+                <div className="trade-col">Token</div>
                 <div className="trade-col">Entry</div>
                 <div className="trade-col">Exit</div>
                 <div className="trade-col">PnL</div>
@@ -128,10 +129,11 @@ function BacktestDashboard({ strategy, onClose, onJoinWaitlist }) {
               <div className="backtest-trades-list">
                 {(strategy.backtest.trades || []).map((trade, index) => (
                   <div key={index} className={`backtest-trade-row ${trade.pnl >= 0 ? 'trade-win' : 'trade-loss'}`}>
-                    <div className="trade-col">{trade.timestamp}</div>
+                    <div className="trade-col">{trade.time}</div>
                     <div className="trade-col">{trade.type}</div>
-                    <div className="trade-col">{trade.entry}</div>
-                    <div className="trade-col">{trade.exit}</div>
+                    <div className="trade-col">{trade.token}</div>
+                    <div className="trade-col">{trade.entryPrice}</div>
+                    <div className="trade-col">{trade.exitPrice}</div>
                     <div className={`trade-col ${trade.pnl >= 0 ? 'positive' : 'negative'}`}>
                       {trade.pnl >= 0 ? '+' : ''}{trade.pnl}
                     </div>
@@ -147,4 +149,3 @@ function BacktestDashboard({ strategy, onClose, onJoinWaitlist }) {
 }
 
 export default BacktestDashboard
-

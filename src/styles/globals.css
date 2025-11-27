@@ -1027,12 +1027,12 @@ body {
     min-height: 450px;
     max-height: 550px;
   }
-  
+
   .outline-card {
     max-height: 520px;
     padding: var(--spacing-sm);
   }
-  
+
   .outline-card-thumbnail {
     height: 160px;
   }
@@ -1185,7 +1185,7 @@ body {
 
 /* Fire particles */
 .vault-banner {
-  background-image: 
+  background-image:
     radial-gradient(circle at 20% 80%, rgba(255, 100, 0, 0.3) 0%, transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(255, 150, 0, 0.3) 0%, transparent 50%),
     radial-gradient(circle at 50% 90%, rgba(255, 215, 0, 0.2) 0%, transparent 60%);
@@ -1871,7 +1871,7 @@ body {
 
 .backtest-trades-header {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
   gap: var(--spacing-sm);
   padding: var(--spacing-md);
   background-color: rgba(255, 215, 0, 0.05);
@@ -1890,7 +1890,7 @@ body {
 
 .backtest-trade-row {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
   gap: var(--spacing-sm);
   padding: var(--spacing-sm) var(--spacing-md);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -1952,18 +1952,18 @@ body {
     align-items: flex-start;
     gap: var(--spacing-lg);
   }
-  
+
   .vault-banner-stats {
     width: 100%;
     justify-content: space-between;
   }
-  
+
   .vault-banner-arrow {
     position: absolute;
     top: var(--spacing-lg);
     right: var(--spacing-lg);
   }
-  
+
   .strategies-grid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
@@ -1973,42 +1973,41 @@ body {
   .vault-banner {
     padding: var(--spacing-lg);
   }
-  
+
   .vault-banner-title {
     font-size: 1.5rem;
   }
-  
+
   .vault-banner-stats {
     flex-direction: column;
     gap: var(--spacing-md);
   }
-  
+
   .vault-stat {
     align-items: flex-start;
   }
-  
+
   .strategies-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .backtest-dashboard {
     max-width: 100%;
     margin: var(--spacing-sm);
   }
-  
+
   .backtest-header {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .result-main {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--spacing-md);
   }
-  
+
   .result-stats {
     align-items: flex-start;
   }
 }
-
