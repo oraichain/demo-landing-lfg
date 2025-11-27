@@ -12,7 +12,7 @@ function OutlineCard({ title, body, thumbnail, script, isActive, animationType }
               ))}
             </div>
           )}
-          
+
           {animationType === 'neural-network' && (
             <div className="visualizer-pingpong">
               {[...Array(5)].map((_, i) => (
@@ -20,7 +20,7 @@ function OutlineCard({ title, body, thumbnail, script, isActive, animationType }
               ))}
             </div>
           )}
-          
+
           {animationType === 'trading-pairs' && (
             <div className="visualizer-oscilloscope">
               <svg viewBox="0 0 200 150" className="oscilloscope-svg">
@@ -32,7 +32,7 @@ function OutlineCard({ title, body, thumbnail, script, isActive, animationType }
               </svg>
             </div>
           )}
-          
+
           {animationType === 'mobile-interface' && (
             <div className="visualizer-particles">
               {[...Array(50)].map((_, i) => (
@@ -40,7 +40,7 @@ function OutlineCard({ title, body, thumbnail, script, isActive, animationType }
               ))}
             </div>
           )}
-          
+
           {animationType === 'vault-stacking' && (
             <div className="visualizer-vault">
               <div className="vault-door">
@@ -51,7 +51,7 @@ function OutlineCard({ title, body, thumbnail, script, isActive, animationType }
               </div>
             </div>
           )}
-          
+
           {animationType === 'money-flow' && (
             <div className="visualizer-waves">
               <svg viewBox="0 0 200 150" className="waves-svg">
@@ -61,7 +61,7 @@ function OutlineCard({ title, body, thumbnail, script, isActive, animationType }
               </svg>
             </div>
           )}
-          
+
           {animationType === 'network-ecosystem' && (
             <div className="visualizer-matrix">
               {[...Array(100)].map((_, i) => (
@@ -69,7 +69,7 @@ function OutlineCard({ title, body, thumbnail, script, isActive, animationType }
               ))}
             </div>
           )}
-          
+
           {animationType === 'automation-waves' && (
             <div className="visualizer-circle">
               <svg viewBox="0 0 200 150" className="circle-svg">
@@ -89,23 +89,22 @@ function OutlineCard({ title, body, thumbnail, script, isActive, animationType }
           )}
         </div>
       </div>
-      
+
       <div className="outline-card-content">
         <h2 className="outline-card-title">
           <span className="title-text">{title}</span>
           <span className="title-glow"></span>
         </h2>
         <p className="outline-card-body">{body}</p>
-        {script && (
+        {/* {script && (
           <div className="outline-card-script">
             <p className="script-label">Script:</p>
             <p className="script-text">{script}</p>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   )
 }
 
 export default OutlineCard
-
